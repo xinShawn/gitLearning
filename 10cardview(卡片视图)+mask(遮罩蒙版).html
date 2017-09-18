@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<!--卡片视图-->
+		<!--使用.mui-card即可生成一个卡片容器，卡片视图主要有页眉、内容区、页脚三部分组成。-->
+		<div class="mui-card">
+			<!--页眉，放置标题-->
+			<!--<div class="mui-card-header">页眉</div>-->
+			
+			<!--卡片页面及内容区，均支持放置图片；页眉放图片的话，需要在.mui-card-header节点上增加.mui-card-media，然后设置一张图片做背景图即可。-->
+			<div class="mui-card-header mui-card-media" style="height: 40px; background-image: url(img/fuji.png);"></div>
+			
+			<!--若希望在页眉放置更丰富的信息，比如头像、主标题、副标题，则需要使用.mui-media-body-->
+			<div class="mui-card-header mui-card-media">
+				<img src="img/manbu.jpg"/>
+				<div class="mui-media-body">
+					<div>小M</div>
+					<p>发表于 10点51分</p>
+				</div>
+			</div>
+			
+			<!--内容区-->
+			<div class="mui-card-content">内容区</div>
+			
+			<!--页脚，放置补充信息或支持的操作-->
+			<div class="mui-card-footer">页脚</div>
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			
+			//蒙版遮罩 mask
+			//在popover、侧滑菜单等界面，经常会用到蒙版遮罩；比如popover弹出后，除popover控件外的其它区域都会遮罩一层蒙版，用户点击蒙版不会触发蒙版下方的逻辑，而会关闭popover同时关闭蒙版；再比如侧滑菜单界面，菜单划出后，除侧滑菜单之外的其它区域都会遮罩一层蒙版，用户点击蒙版会关闭侧滑菜单同时关闭蒙版。
+			//遮罩蒙版常用的操作包括：创建、显示、关闭
+			var mask = mui.createMask(callback);   	//callback为用户点击蒙版时自动执行的回调
+			mask.show();   	//显示遮罩
+			mask.close();	//关闭遮罩
+			
+			//注意：关闭遮罩仅会关闭，不会销毁；关闭之后可以再次调用mask.show();打开遮罩;
+			//mui默认的蒙版遮罩使用.mui-backdrop定义，若需自定义遮罩效果，只需覆盖定义.mui-backdrop即可
+//			.mui-backdrop{Position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 998; background-color: rgba(0, 0, 0)}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-backdrop-action mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">折叠面板</h1>
+		</header>
+		
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-collapse">
+					<a class="mui-navigate-right" href="#">面板1</a>
+					<div class="mui-collapse-content">
+						<p>面板1内容</p>
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-collapse">
+					<a class="mui-navigate-right" href="#">面板2</a>
+					<div class="mui-collapse-content">
+						<p>面板2内容</p>
+					</div>
+				</li>
+			</ul>
+			
+			<!--普通按钮： 在button节点上增加.mui-btn类，即可生成默认按钮；若需要其他颜色的按钮，则继续增加对应class即可，比如.mui-btn-blue即可变成蓝色按钮-->
+			<div class="button">
+				<button type="button" class="mui-btn">默认</button>
+				<button type="button" class="mui-btn mui-btn-primary">蓝色</button>
+				<button type="button" class="mui-btn mui-btn-success">绿色</button>
+				<button type="button" class="mui-btn mui-btn-warning">黄色</button>
+				<button type="button" class="mui-btn mui-btn-danger">红色</button>
+				<button type="button" class="mui-btn mui-btn-royal">紫色</button>
+			</div>
+			
+			<!--若希望无底色、有边框的按钮，仅需增加.mui-btn-outlined类即可。-->
+			<div class="button">
+				<button type="button" class="mui-btn mui-btn-outlined">默认</button>
+				<button type="button" class="mui-btn mui-btn-primary mui-btn-outlined">蓝色</button>
+				<button type="button" class="mui-btn mui-btn-success mui-btn-outlined">绿色</button>
+				<button type="button" class="mui-btn mui-btn-warning mui-btn-outlined">黄色</button>
+				<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined">红色</button>
+				<button type="button" class="mui-btn mui-btn-royal mui-btn-outlined">紫色</button>
+			</div>
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+
+</html>

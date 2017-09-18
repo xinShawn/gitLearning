@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="css/mui.css"/>
+</head>
+<body>
+	<!--.mui-progressbar 有准确值的进度条会显示当前进度正处于整体进度的占比位置，用户可以更直观的预期完成时间；
+		使用进度条控件，需要一个进度条控件容器，mui会自动识别该容器下是否有进度条控件，若没有，则自动创建。-->
+	<div id="demo1" class="mui-progressbar">
+		<span></span>
+	</div>
+	
+	
+	<!--滑块-->
+	<!--.mui-input-range滑块的容器添加的类名-->
+	<div class="mui-input-row mui-input-range">
+		<label>Range</label>
+		<!--滑块类型为 range, min、max设置可滑动的最小最大值-->
+		<input type="range" min="0" max="100" id="range1" />
+	</div>
+	<div style="text-align: center;">
+		<input type="button" class="mui-btn" value="获取滑块值" onclick="getVal();" />
+	</div>
+	
+	<!--switch 开关： 点击、滑动两种手势都可以对开关控件进行操作-->
+	<!--基本类为.mui-switch、.mui-switch-handle， 若希望开关默认为打开状态， 只需要再.mui-switch节点上增加.mui-active类即可-->
+	<!--若希望隐藏on/off文字提示，变成简洁模式，需要在.mui-switch节点上增加.mui-switch-mini类-->
+	<div class="mui-switch mui-active mui-switch-mini">
+		<div class="mui-switch-handle"></div>
+	</div>
+	<!--蓝色开关，只需在.mui-switch节点上增加.mui-switch-blue类即可-->
+	<div class="mui-switch mui-active mui-switch-mini mui-switch-blue" id="mySwitch">
+		<div class="mui-switch-handle"></div>
+	</div>
+    
+    <script src="js/mui.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    	mui.init();
+    	//初始化
+//  	mui(demo1).progressbar({progress: 20}).show();		//数字就传入完成度。
+    	
+//  	progressbar初始化逻辑：
+//		检查当前容器(container控件)自身是否包含.mui-progressbar类：
+//		当前容器包含.mui-progressbar类，则以当前容器为目标控件，直接显示进度；
+//		否则，检查当前容器的直接孩子节点是否包含.mui-progressbar类，若存在，则以遍历到的第一个含有.mui-progressbar类的孩子节点为目标控件，显示进度；
+//		若当前容器的直接孩子节点，均不含.mui-progressbar类,则自动创建进度条控件；
+    	//更改显示进度条
+    	mui(demo1).progressbar().setProgress(50);
+//  	关闭进度条
+    	mui(demo1).progressbar().hide();
+    	
+    	
+    	//点击获取当前滑块值
+    	function getVal(){
+    		var rangeObj = mui("#range1");
+    		mui.toast(rangeObj[0].value);
+    	}
+    	
+    	
+    	//开关 块
+    	//若要获得当前打开状态，可通过判断当前开关控件是否包含.mui-active类来实现，若包含，则为打开状态，否则为关闭。
+    	document.getElementById("mySwitch").onclick = function(){
+    		var isActive = this.classList.contains("mui-active");
+    		if(isActive){
+	    		mui.toast("on");
+	    	}else{
+	    		mui.toast("off");
+	    	}
+    	}
+    	
+    	//若使用js打开、关闭开关控件，可使用switch插件的toggle()方法，如下为示例代码
+//  	mui("#mySwitch").switch().toggle();
+		
+		//开关控件在打开、关闭两种状态之间进行切换时，会触发toggle事件，通过事件的detail.isActive属性可以判断当前开关状态。可通过监听toggle事件，可以在开关切换时执行特定业务逻辑。
+		document.getElementById("mySwitch").addEventListener("toggle", function(event){
+			if(event.detail.isActive){
+				console.log("你启动了开关");
+			}else{
+				console.log("你关闭了开关");
+			}
+		})
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div><button id="btn1">弹窗</button></div>
+		
+		<ul class="list1">
+			<li>吃饭</li>
+			<li>睡觉</li>
+			<li>打代码</li>
+		</ul>
+		
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			
+			//可以使用addEventListener()方法监听某 个特定元素上的事件外，也可以使用.on()方法实现批量元素的事件绑定。
+			mui.plusReady(function(){
+				document.getElementById("btn1").addEventListener("tap", function(){
+					alert(1);
+				});
+				
+				//on 示例，适用于批量元素绑定。
+				mui("#list1").on("tap", "li", function(){
+					var thisHtml = this.innerHTML;
+					alert(thisHtml);
+				});
+				
+				//事件取消
+				//使用on()方法绑定事件后，若希望事件取消绑定，则可以使用off()方法
+				mui("#list1").off("tap", "li");
+				
+				//事件模拟
+				//使用mui.trigger()方法可以动态触发特定的DOM元素上的事件
+				var btn = document.getElementById("btn1");
+				mui.trigger(btn, "tap");
+				
+				//手势事件
+				//在开发移动端的应用时，会用到很多的手势操作，比如滑动、长按等，为了方便开发者快速集成这些手势，mui内置了常用的手势事件
+//				点击
+//				tap			单机屏幕
+//				doubletap	双击屏幕
+//				长按
+//				longtap		长按屏幕
+//				hold		按住屏幕
+//				release		离开屏幕
+//				滑动
+//				swipeleft	向左滑动
+//				swiperright	向右滑动
+//				swiperup	向上滑动
+//				swiperdown	向下滑动
+//				拖动
+//				dragstart	开始拖动
+//				drag		拖动中
+//				dragend		拖动结束
+
+				//自定义事件
+				//在App开发中，经常会遇到页面间传值的需求，比如从新闻列表页进入详情页，需要将新闻id传递过去； Html5Plus规范设计了evalJS方法来解决该问题； 但evalJS方法仅接收字符串参数，涉及多个参数时，需要开发人员手动拼字符串； 为简化开发，mui框架在evalJS方法的基础上，封装了自定义事件，通过自定义事件，用户可以轻松实现多webview间数据传递。
+//				window.addEventListener('customEvent',function(event){mui.toast('ok');});
+
+				//触发自定义事件
+				//通过mui.fire()方法可触发目标窗口的自定义事件：
+//				target
+//				Type: WebviewObject		需传值的目标webview
+//				event
+//				Type: String			自定义事件名称
+//				data
+//				Type: JSON				json格式的数据
+			});
+			
+			
+			//自定义事件完整例子
+//			<div class="mui-content">
+//			  <ul id="list1">
+//			    <li id="1">新闻1</li>
+//			    <li id="2">新闻2</li>
+//			    <li id="3">新闻3</li>
+//			  </ul>
+//			</div>
+//			</body>
+//			<script type="text/javascript">
+//				mui.init();
+//				mui.plusReady(function(){
+//				  var detailPage = mui.preload({url:'sub.html',id:'sub.html'});
+//				  mui('#list1').on('tap', 'li', function(e){
+//				    mui.fire(detailPage,'newsId',{id:this.getAttribute('id')});
+//				    mui.openWindow({id:'sub.html'});
+//				  });
+//				});
+//			<script>
+	
+			//子页面
+//			mui.plusReady(function(){
+//			    window.addEventListener('newsId',function(event){
+//			        console.log(event.detail.id);
+//			    });
+//			});
+			
+		</script>
+	</body>
+
+</html>

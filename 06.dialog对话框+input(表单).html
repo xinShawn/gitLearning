@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			
+//			mui.alert() 普通提醒
+//			参数：1. message Type: String 提示对话框上显示的内容
+//				2. title Type: String 提示对话框上显示的标题
+//				3. btnValue Type: String 提示对话框上按钮显示的内容
+//				4. callback Type: Function 提示对话框上关闭后的回调函数
+//				5. type Value: 'div' 是否使用H5绘制的对话框。此项一般不设置。
+			mui.alert("欢迎使用Hello MUI", "Hello MUI", "自定义按钮", function(){
+				mui.toast('你刚关闭了警告框');
+			});
+			
+			//mui.confirm()	确定消息框
+//			1、message Type: String 提示对话框上显示的内容
+//			2、title Type: String提示对话框上显示的标题
+//			3、btnValue Type: Array 提示对话框上按钮显示的内容
+//			4、callback Type: Function 提示对话框上关闭后的回调函数
+//			5、type Value: 'div' 是否使用h5绘制的对话框
+
+			var btnArray = ['取消', '确定'];
+			mui.confirm('真的要删除吗？', '警告', btnArray, function(e){
+				if(e.index == 1){
+					mui.toast('确认');
+				}else{
+					mui.toast('取消')
+				}
+			})
+			
+			//mui.prompt()	输入框
+//			1. message Type: String 提示对话框上显示的内容
+//			2. placeholder Type: String 编辑框显示的提示文字
+//			3. title Type: String 提示对话框上显示的标题
+//			4. btnValue Type: Array 提示对话框上按钮显示的内容
+//			5. callback Type: Function提示对话框上关闭后的回调函数
+//			6. type Value: 'div' 是否使用h5绘制的对话框
+			
+			mui.prompt('请输入文字', '提示', btnArray, function(e){
+				if(e.index == 1){
+					mui.toast(e.value);
+				}else{
+					mui.toast('您取消了输入');
+				}
+			})
+			
+			//mui.toast() 自动消失的消息框
+			mui.toast("这是一个自动消失的对话框");
+		
+		</script>
+	</body>
+
+</html>
